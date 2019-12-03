@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Flows } from 'flows/release/client';
+import { Flows } from '@codeinkit/flows/release/client';
 export const flows = new Flows();
 /**
  * react hook that execute a hook from flow library
@@ -7,9 +7,13 @@ export const flows = new Flows();
  * @param data flow data, show include the flowName to identify the executed flow.
  */
 export function useCIKFlow(data, itemToFollow) {
-    const [flowState, setFlowState] = useState(data[itemToFollow] || data);
+    const initialState = data[itemToFollow] || data;
+    const [flowState, setFlowState] = useState(initialState);
     useEffect(() => {
-        flows.execute(data.flowName, data).then(fdata => setFlowState(fdata[itemToFollow] || fdata));
+        flows.execute(data.flowName, data).then((fdata) => {
+            const newData = fdata[itemToFollow] || fdata;
+            setFlowState(newData);
+        });
         // we don't want to execute on each update (render) therefore we don't have dependencies.
         // eslint-disable-next-line
     }, []);

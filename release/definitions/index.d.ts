@@ -1,4 +1,4 @@
-import { Flows } from 'flows/release/client';
+import { Flows } from '@codeinkit/flows/release/client';
 export declare const flows: Flows;
 /**
  * react hook that execute a hook from flow library
