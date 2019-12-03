@@ -1,0 +1,27 @@
+{
+  "name": "@codeinkit/react-flows",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./release/js/index.js",
+  "types": "./release/definitions/index.d.ts",
+  "scripts": {
+    "build": "gulp"
+  },
+  "author": {
+    "name": "codinkit dev team",
+    "email": "dev@codinkit.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.9.11",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-typescript": "^5.0.1",
+    "merge2": "^1.3.0",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "@codeinkit/flows": "^1.0.2",
+    "react": "^16.11.0"
+  }
+}
