@@ -47,8 +47,7 @@ export function ask_server(socket) {
                 const data = JSON.parse(message.data);
                 if (data.requestId === fdata.requestId) {
                     socket.removeEventListener('message', event);
-                    Object.assign(fdata, data);
-                    resolve();
+                    resolve(data);
                 }
             };
             socket.addEventListener('message', event);

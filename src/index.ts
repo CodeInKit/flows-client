@@ -54,8 +54,7 @@ export function ask_server(socket: WebSocket) {
         
         if(data.requestId === fdata.requestId) {
           socket.removeEventListener('message', event);
-          Object.assign(fdata, data);
-          resolve();
+          resolve(data);
         }
       };
 
