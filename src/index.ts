@@ -9,7 +9,7 @@ export const flows = new Flows();
  * @param data flow data, show include the flowName to identify the executed flow.
  */
 export function useCIKFlow(data: any, itemToFollow: string) {
-  const initialState: any = data[itemToFollow] || data;
+  const initialState: any = typeof data[itemToFollow] !== 'undefined' ? data[itemToFollow] : data;
   const [flowState, setFlowState] = useState(initialState);
 
   useEffect(() => {
