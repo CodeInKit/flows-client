@@ -7,11 +7,11 @@ export const flows = new Flows();
  * @param data flow data, show include the flowName to identify the executed flow.
  */
 export function useCIKFlow(data, itemToFollow) {
-    const initialState = data[itemToFollow] || data;
+    const initialState = typeof data[itemToFollow] !== 'undefined' ? data[itemToFollow] : data;
     const [flowState, setFlowState] = useState(initialState);
     useEffect(() => {
         flows.execute(data.flowName, data).then((fdata) => {
-            const newData = fdata[itemToFollow] || fdata;
+            const newData = typeof fdata[itemToFollow] !== 'undefined' ? fdata[itemToFollow] : fdata;
             setFlowState(newData);
         });
         // we don't want to execute on each update (render) therefore we don't have dependencies.
