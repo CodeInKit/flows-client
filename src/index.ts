@@ -8,12 +8,12 @@ export const flows = new Flows();
  * 
  * @param data flow data, show include the flowName to identify the executed flow.
  */
-export function useCIKFlow(data: any, itemToFollow: string) {
+export function useCIKFlow(flowName:string, data: any, itemToFollow: string) {
   const initialState: any = typeof data[itemToFollow] !== 'undefined' ? data[itemToFollow] : data;
   const [flowState, setFlowState] = useState(initialState);
 
   useEffect(() => {
-    flows.execute(data.flowName, data).then((fdata: any)=> {
+    flows.execute(flowName, data).then((fdata: any)=> {
       const newData: any = typeof fdata[itemToFollow] !== 'undefined' ? fdata[itemToFollow] : fdata;
       setFlowState(newData);
     });
@@ -32,10 +32,13 @@ export function useCIKFlow(data: any, itemToFollow: string) {
  * @param {WebSocket} socket 
  * @param {string} flowName 
  */
-export function ask_server(socket: WebSocket) {
+export function ask_server(socket: WebSocket, flowName: string) {
   // this is the action that will send the data through websocket and return with the data to the next action.
-  return function(fdata: {requestId?: number}) {
-    fdata.requestId = Math.round(Math.random() * 10 * 8);
+  return function(fdata: any) {
+    fdata.__flows = {
+      flowName,
+      requestId: Math.round(Math.random() * Math.pow(10,16)).toString(16)
+    }
 
     if(socket.readyState === WebSocket.OPEN) {
       socket.send(JSON.stringify(fdata));
@@ -52,7 +55,7 @@ export function ask_server(socket: WebSocket) {
       const event = (message: MessageEvent) => {
         const data = JSON.parse(message.data);
         
-        if(data.requestId === fdata.requestId) {
+        if(data.__flows.requestId === fdata.__flows.requestId) {
           socket.removeEventListener('message', event);
           resolve(data);
         }
