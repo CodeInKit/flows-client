@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.11",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.2.0",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "@codeinkit/flows": "^1.0.2",
+    "lodash": "^4.17.15",
     "react": "^16.11.0"
   }
 }

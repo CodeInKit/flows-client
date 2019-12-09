@@ -5,7 +5,7 @@ export declare const flows: Flows;
  *
  * @param data flow data, show include the flowName to identify the executed flow.
  */
-export declare function useCIKFlow(flowName: string, data: any, itemToFollow: string): any[];
+export declare function useCIKFlow(flowName: string, data: any, itemToFollow?: string, dependencies?: string[]): any[];
 /**
  * this high order action send the data through websocket to the server
  * and return the response from the server flow.
