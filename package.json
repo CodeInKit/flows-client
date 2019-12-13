@@ -4,6 +4,9 @@
   "description": "",
   "main": "./release/js/index.js",
   "types": "./release/definitions/index.d.ts",
+  "repository": {
+    "url": "https://github.com/CodeInKit/flows-client"
+  },
   "scripts": {
     "build": "gulp"
   },
