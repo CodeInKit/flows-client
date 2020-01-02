@@ -1,6 +1,6 @@
 import { ask_server } from './actions/ask_server';
 import { useCIKFlow } from './react';
-import { createState, setState, stateSnapshot, useCIKState } from './state';
+import { createState, setState, stateSnapshot, useCIKState, stateObservable } from './state';
 import { flows } from './flows';
 export { flows };
 export const actions = {
@@ -13,7 +13,8 @@ export const cikReact = {
 export const state = {
     createState,
     setState,
-    stateSnapshot
+    stateSnapshot,
+    stateObservable
 };
 export default {
     flows,
@@ -27,6 +28,7 @@ export default {
     state: {
         createState,
         setState,
-        stateSnapshot
+        stateSnapshot,
+        stateObservable
     }
 };

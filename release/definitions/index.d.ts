@@ -1,6 +1,6 @@
 import { ask_server } from './actions/ask_server';
 import { useCIKFlow } from './react';
-import { setState, useCIKState } from './state';
+import { setState, useCIKState, stateObservable } from './state';
 import { flows } from './flows';
 import { IActionData } from '@codeinkit/flows';
 export { IActionData };
@@ -16,6 +16,7 @@ export declare const state: {
     createState: <T>(initialState: T) => void;
     setState: typeof setState;
     stateSnapshot: (path: string) => any;
+    stateObservable: typeof stateObservable;
 };
 declare const _default: {
     flows: import("@codeinkit/flows/release/client").Flows;
@@ -30,6 +31,7 @@ declare const _default: {
         createState: <T>(initialState: T) => void;
         setState: typeof setState;
         stateSnapshot: (path: string) => any;
+        stateObservable: typeof stateObservable;
     };
 };
 export default _default;
