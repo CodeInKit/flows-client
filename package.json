@@ -27,6 +27,7 @@
   "dependencies": {
     "@codeinkit/flows": "^1.0.8",
     "lodash": "^4.17.15",
-    "react": "^16.12.0"
+    "react": "^16.12.0",
+    "rxjs": "^6.5.4"
   }
 }

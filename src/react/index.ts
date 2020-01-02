@@ -39,4 +39,3 @@ export function useCIKFlow(flowName:string, data: any, itemToFollow?: string, de
 
   return [flowState, setFlowState];
 }
-
