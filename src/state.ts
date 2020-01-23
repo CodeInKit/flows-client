@@ -13,7 +13,12 @@ export const createState = <T>(initialState: T) => {
 
   throw new Error('state already exists');
 };
-export const stateSnapshot = (path: string) => _.get(state.getValue(), path);
+export const stateSnapshot = (path: string) => {
+  if(_.isUndefined(path)) {
+    return state.getValue();
+  }
+  return _.get(state.getValue(), path);
+}
 
 export function useCIKState(path: string) {
   const [value, setValue] = useState(_.get(state.getValue(), path));
